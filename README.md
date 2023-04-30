@@ -17,7 +17,6 @@ dokku apps:create "$APP_NAME"
 dokku storage:mount "$APP_NAME" /var/lib/dokku/data/storage/$APP_NAME:/app/data
 dokku config:set --no-restart "$APP_NAME" "USERNAME=$USERNAME"
 dokku config:set --no-restart "$APP_NAME" "PASSWORD=$PASSWORD"
-dokku config:set "$APP_NAME" "DOKKU_LETSENCRYPT_EMAIL=$ADMIN_EMAIL"
 dokku domains:add "$APP_NAME" "$APP_DOMAIN"
 ```
 
@@ -33,6 +32,7 @@ git push dokku main
 Finally, back on server:
 
 ```shell
+dokku letsencrypt:set "$APP_NAME" email "$ADMIN_EMAIL"
 dokku letsencrypt:enable "$APP_NAME"
 ```
 
