@@ -2,7 +2,9 @@ FROM ubuntu:18.04
 
 WORKDIR /app
 
-RUN apt update && apt install -y apache2 apache2-utils
+RUN apt update \
+	&& apt install -y apache2 apache2-utils \
+	&& apt clean
 RUN a2enmod dav*
 
 ADD webdav.conf /etc/apache2/sites-available/webdav.conf
