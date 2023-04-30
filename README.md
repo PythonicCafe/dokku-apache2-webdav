@@ -33,7 +33,7 @@ git push dokku main
 Finally, back on server:
 
 ```shell
-dokku letsencrypt:enable $APP
+dokku letsencrypt:enable "$APP_NAME"
 ```
 
 Now you can access `https://$APP_DOMAIN/data` using `$USERNAME` and
