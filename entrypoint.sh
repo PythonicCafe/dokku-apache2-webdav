@@ -15,6 +15,9 @@ fi
 sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
 
 mkdir -p /app/data
-chown -R www-data:www-data /app/data
+
+usermod --non-unique --uid 1000 www-data \
+  && groupmod --non-unique --gid 1000 www-data \
+  && chown -R www-data:www-data /app/data
 
 apachectl -D FOREGROUND
